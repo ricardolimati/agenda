@@ -13,8 +13,12 @@ class Pessoa extends Model
 
     protected $table = 'pessoas';
 
-    public function telefone()
+    public function telefones()
     {
         return $this->hasMany(Telefone::class, 'pessoa_id');
+    }
+    public static function indexLetra($letra)
+    {
+        return static::where('nome', 'LIKE', $letra.'%')->get();
     }
 }
